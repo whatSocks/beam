@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/beam/static/css/main.e6c13ad2.css",
+    "main.js": "/beam/static/js/main.4423c3e4.js",
+    "static/js/787.2534bcf1.chunk.js": "/beam/static/js/787.2534bcf1.chunk.js",
+    "index.html": "/beam/index.html",
+    "main.e6c13ad2.css.map": "/beam/static/css/main.e6c13ad2.css.map",
+    "main.4423c3e4.js.map": "/beam/static/js/main.4423c3e4.js.map",
+    "787.2534bcf1.chunk.js.map": "/beam/static/js/787.2534bcf1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.4423c3e4.js"
+  ]
+}
