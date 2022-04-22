@@ -26,6 +26,7 @@ import Playlists from "./components/Explore/Playlists";
 import Artists from "./components/Explore/Artists";
 import Labels from "./components/Explore/Labels";
 import Releases from "./components/Explore/Releases";
+import { AuthProvider } from "./auth";
 
 injectGlobal`
   * {
@@ -86,6 +87,22 @@ injectGlobal`
   }
 `;
 
+const oidcConfig = {
+  onSignIn: () => {
+    // Redirect?
+  },
+  authority: "https://id.resonate.coop",
+  clientId: "beam.resonate.coop",
+  redirectUri: "http://localhost:8080/",
+  metadata: {
+    issuer: "https://id.resonate.coop",
+    authorization_endpoint: "https://id.resonate.coop/web/authorize",
+    token_endpoint: "https://id.resonate.coop/v1/oauth/tokens",
+    // userinfo_endpoint: "https://slack.com/api/openid.connect.userInfo",
+    // jwks_uri: "https://slack.com/openid/connect/keys",
+  },
+};
+
 const appWrapper = css`
   position: relative;
   width: 100%;
@@ -123,7 +140,14 @@ function App() {
       <div className={contentWrapper}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <AuthProvider {...oidcConfig}>
+                <Profile />
+              </AuthProvider>
+            }
+          />
           <Route path="/tag/:tagString" element={<TagList />} />
           <Route path="/library" element={<Library />}>
             <Route path="queue" element={<Queue />} />
